@@ -1,0 +1,40 @@
+body {
+  background-image: url('/outerspace.jpg')  
+}
+
+.container {
+  margin: 80px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+}
+
+th {
+  text-align: left;
+}
+
+.racer_table {
+  margin: 0 auto;
+}
+
+.racer_table td {
+  margin: auto;
+  /*background-color: white;*/
+  height: 50px;
+  width: 50px;
+  /*border: 2px dotted white;*/
+}
+
+.racer_table td.active {
+  background-image: url('/little_rocket.jpg'); 
+}
+
+.racer_table td {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+#finish {
+    border-bottom: 16px dotted white;
+}
