@@ -3,6 +3,8 @@
 <h1> Congrats to the winner: <%= @winner.initials %>!  </h1>
 <h2> Your time was: <%= @win_time %> seconds.  </h2>
 <h2> Better luck next time: <%= @loser.initials %>  </h2>
+<h3> You can always check out the results of this game at:<h3>
+  <h3><a href="<%=@url%>"><%=@url%></a></h3>
 <br>
 <br>
 <a href="/rematch"><button class="button">Rematch?</button></a>
@@ -12,7 +14,9 @@
   <% @all_games.each do |game| %>
      <tr>
       <td>Time: <%= game.win_time %></td>
-      <td>Winner: <%= game.players.first %></td>
+      <td>Winner: <%=game.winner %></td>
+      <td>Loser: <%=game.loser %></td>
+      <td><a href="<%=game.url%>"><%=game.url%></a></td>
     </tr>
   <% end %>
 </table>

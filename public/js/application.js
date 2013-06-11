@@ -4,7 +4,6 @@ var pl2 = 20;
 
  var movePlayer = function(player, col) {
   $('tr:nth-Child('+ (player + 1) +')').find('td:nth-Child('+ col +')').removeClass('active');
-  // player -= 1
   $('tr:nth-Child('+ player +')').find('td:nth-Child('+ col +')').addClass('active');
  };
 
@@ -13,17 +12,14 @@ var recordResults = function(winner, loser, startTime) {
   var winner = winner;
   var loser = loser;
   var time = endTime - startTime;
-  var raceId = $('.race_id').text();
-  var data = {'time' : time, 'winner' : winner, 'loser' : loser, 'race_id' : raceId};
-  // debugger
+  var gameId = $('.game_id').text();
+  var data = {'time' : time, 'winner' : winner, 'loser' : loser, 'game_id' : gameId };
   $.post('/game_over', data, function(response){
     $('.container').html(response);
   });
 };
 
-
 $(document).ready(function() {
-
   var player1Name = $('#player1Name').text();
   var player2Name = $('#player2Name').text();
   var xTriggered = 0;
@@ -52,24 +48,19 @@ $(document).ready(function() {
       if (pl1 === 1) {
         recordResults(player1Name, player2Name, startTime)
         $(document).unbind('keyup');
-        // return $('tr').first().find('td:nth-Child(1)').text('YAY');
       }
       else if (pl2 === 1) {
         recordResults(player2Name, player1Name, startTime)
         $(document).unbind('keyup');
-        // return $('tr').first().find('td:nth-Child(2)').text('YAY');        
       }
 
       if (e.which == 81) {
           pl1 -= 1;
           movePlayer(pl1, 1)
-      } // if 
+      } 
       else if (e.which == 80){
           pl2 -= 1;
           movePlayer(pl2, 2)
       } // else if
   }); // keyup
-
-
-
 });

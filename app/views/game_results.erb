@@ -1,0 +1,8 @@
+<div class="welcome">
+
+<h1> Congrats to the winner: <%= @game.winner %>!  </h1>
+<h2> Your time was: <%= @game.win_time %> seconds.  </h2>
+<h2> Better luck next time: <%= @game.loser %>  </h2>
+<h3> You can always check out the results of this game at:<h3>
+  <h3><a href="<%=@game.url%>"><%=@game.url%></a></h3>
+</div>
