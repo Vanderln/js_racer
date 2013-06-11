@@ -1,0 +1,20 @@
+<div class="welcome">
+
+<h1> Congrats to the winner: <%= @winner.initials %>!  </h1>
+<h2> Your time was: <%= @win_time %> seconds.  </h2>
+<h2> Better luck next time: <%= @loser.initials %>  </h2>
+<br>
+<br>
+<a href="/rematch"><button class="button">Rematch?</button></a>
+<a href="/logout"><button class="button">Finished?</button></a>
+
+<table>
+  <% @all_games.each do |game| %>
+     <tr>
+      <td>Time: <%= game.win_time %></td>
+      <td>Winner: <%= game.players.first %></td>
+    </tr>
+  <% end %>
+</table>
+
+</div>

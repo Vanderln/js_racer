@@ -1,112 +1,28 @@
 <div class="container">
-<table class="racer_table">
+  
+  <div class="welcome">
+    <h1> Welcome to space racer! </h1>
+    <h3> Please enter your data </h3>
+  </div> 
 
-  <tr id="finish">  
-    <td class="player1_strip"></td>
-    <td class="player2_strip"></td>
-  </tr>
-
-  <tr id="pre">
-     <td class="active"></td>
-     <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td class="active"></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-
-</table>
-
+  <div class="front">
+    <form action="/login" method="post">
+      <input type="text" name="post[player1]" placeholder="Player 1 initials">
+      <input type="text" name="post[player2]" placeholder="Player 2 initials">
+      <input type="submit" value="Launch!">
+    </form>
+  </div>
+  <div class="welcome">
+  <% if @player1 %>
+    <% if @player1.errors || @player2.errors%>
+      <% @player1.errors.each do |error, val|%>
+        <%=val%><br>
+      <%end%>
+      <% @player2.errors.each do |error, val|%>
+        <%=val%><br>
+      <%end%>
+    <%end%>
+  <%end%>
+</div>
 </div>
 

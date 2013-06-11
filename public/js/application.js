@@ -8,33 +8,56 @@ var pl2 = 20;
   $('tr:nth-Child('+ player +')').find('td:nth-Child('+ col +')').addClass('active');
  };
 
+var recordResults = function(winner, loser, startTime) {
+  endTime = new Date();
+  var winner = winner;
+  var loser = loser;
+  var time = endTime - startTime;
+  var raceId = $('.race_id').text();
+  var data = {'time' : time, 'winner' : winner, 'loser' : loser, 'race_id' : raceId};
+  // debugger
+  $.post('/game_over', data, function(response){
+    $('.container').html(response);
+  });
+};
+
 
 $(document).ready(function() {
+
+  var player1Name = $('#player1Name').text();
+  var player2Name = $('#player2Name').text();
+  var xTriggered = 0;
   // td removeClass('active') 
   // set bottom tds to active :  td addClass('active')
   // for the player who presses their button
     // on key up remove class active from where they were 
     // and add class active to the next cell
-
   // cleared out the previous rockets
   $('.active').removeClass('active');
-
   // label the lanes
-  $('tr').last().find('td:nth-Child(1)').text('Pl.1');
-  $('tr').last().find('td:nth-Child(2)').text('Pl.2');
-
+  // $('tr').last().find('td:nth-Child(1)').text('Pl.1');
+  // $('tr').last().find('td:nth-Child(2)').text('Pl.2');
 
   // put rockets at the start
   $('tr:nth-Child('+ pl1 +')').find('td:nth-Child(1)').addClass('active');
   $('tr:nth-Child('+ pl2 +')').find('td:nth-Child(2)').addClass('active');
 
   $(document).keyup(function(e){
+      xTriggered++;
+      
+      if (xTriggered===1){
+        startTime = new Date();
+      }
+
       if (pl1 === 1) {
-        return $('tr').first().find('td:nth-Child(1)').text('YAY');
+        recordResults(player1Name, player2Name, startTime)
+        $(document).unbind('keyup');
+        // return $('tr').first().find('td:nth-Child(1)').text('YAY');
       }
       else if (pl2 === 1) {
-        return $('tr').first().find('td:nth-Child(2)').text('YAY');
-        
+        recordResults(player2Name, player1Name, startTime)
+        $(document).unbind('keyup');
+        // return $('tr').first().find('td:nth-Child(2)').text('YAY');        
       }
 
       if (e.which == 81) {
@@ -46,6 +69,7 @@ $(document).ready(function() {
           movePlayer(pl2, 2)
       } // else if
   }); // keyup
+
 
 
 });

@@ -38,3 +38,19 @@ th {
 #finish {
     border-bottom: 16px dotted white;
 }
+
+
+.front {
+  background-color: skyblue;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.welcome {
+  color: black;
+  background-color: skyblue;
+  border-radius: 10px;
+  margin: 15px auto;
+  padding: 15px;
+}
