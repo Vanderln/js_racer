@@ -14,8 +14,8 @@
   <% @all_games.each do |game| %>
      <tr>
       <td>Time: <%= game.win_time %></td>
-      <td>Winner: <%=game.winner %></td>
-      <td>Loser: <%=game.loser %></td>
+      <td>Winner: <%= game.winner.initials %></td>
+      <td>Loser: <%= game.loser.initials %></td>
       <td><a href="<%=game.url%>"><%=game.url%></a></td>
     </tr>
   <% end %>

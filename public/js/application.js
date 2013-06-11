@@ -7,14 +7,14 @@ var pl2 = 20;
   $('tr:nth-Child('+ player +')').find('td:nth-Child('+ col +')').addClass('active');
  };
 
-var recordResults = function(winner, loser, startTime) {
+var recordResults = function(pwinner, ploser, pstartTime) {
   endTime = new Date();
-  var winner = winner;
-  var loser = loser;
-  var time = endTime - startTime;
-  var gameId = $('.game_id').text();
+  var winner = pwinner;
+  var loser = ploser;
+  var time = endTime - pstartTime;
+  // var gameId =   //$('.game_id').text();
   var data = {'time' : time, 'winner' : winner, 'loser' : loser, 'game_id' : gameId };
-  $.post('/game_over', data, function(response){
+  $.post('/finished/game_over', data, function(response){
     $('.container').html(response);
   });
 };

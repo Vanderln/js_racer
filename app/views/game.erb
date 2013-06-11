@@ -1,6 +1,6 @@
 <div class="container">
 <table class="racer_table">
-  <div class="game_id"><%=@game.id%></div>
+
   <tr id="finish">  
     <td class="player1_strip"></td>
     <td class="player2_strip"></td>
@@ -107,6 +107,10 @@
   </tr>
 
 </table>
+
+<script>
+  var gameId = <%= @game_id %>
+</script>
 
 </div>
 
